@@ -51,6 +51,15 @@
         </md-layout>
 
 
+        <md-layout md-flex="8">
+          <router-link to="/Users">
+            <md-button class="md-raised md-primary">
+                Users
+            </md-button>
+          </router-link>
+        </md-layout>
+
+
         <md-layout md-flex="60">
           <span></span>
         </md-layout>

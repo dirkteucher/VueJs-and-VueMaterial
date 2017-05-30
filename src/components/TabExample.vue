@@ -54,12 +54,18 @@
           </div>
         </md-tab>
 
+
+
+
         <md-tab id="music" md-label="Step-2">
           <h2>Progress bar</h2>
           <md-progress md-indeterminate></md-progress>
           <md-progress class="md-accent" md-indeterminate></md-progress>
           <md-progress class="md-warn" md-indeterminate></md-progress>
         </md-tab>
+
+
+
 
         <md-tab id="books" md-label="Step-3">
           <p>Spinners</p>
@@ -72,17 +78,36 @@
           <md-spinner :md-size="150" :md-stroke="1" md-indeterminate></md-spinner>
         </md-tab>
 
+
+
+
+
         <md-tab id="pictures" md-label="Step-4" md-tooltip="This is the pictures tab!">
+          <h2>{{msg}}</h2>
+          <input type="text" v-model="title" v-on:keyup="greet"> <br/>
+          <hr/>
+          <h2>This is a method data binding example using vue computed</h2>
+            <label>First Name:</label><input type="text" v-model="user.firstName" > <br/>
+            <label>Last Name:</label><input type="text" v-model="user.lastName" > <br/>
+            <h3>{{fullName}}</h3>
+          <hr/>
+          <h2>This is a for loop example</h2>
+          <ol>
+            <ul v-for="item in items">{{item.title}}</ul>
+          </ol>
           <md-layout md-gutter>
             <md-layout md-column md-gutter>
               <md-layout md-flex="100">
                 <md-card>
                   <md-card-media>
+
                     <img src="/static/Dave.jpg" alt="People">
                   </md-card-media>
                 </md-card>
               </md-layout>
-              <md-layout></md-layout>
+              <md-layout>
+
+              </md-layout>
             </md-layout>
 
             <md-layout md-column md-gutter>
@@ -92,6 +117,9 @@
             </md-layout>
           </md-layout>
         </md-tab>
+
+
+
 
 
         <md-tab id="Grid" md-label="Step-5" md-tooltip="This is the pictures tab!">
@@ -167,9 +195,31 @@ export default {
   name: 'TabExample',
   data () {
     return {
-      msg: 'This is the tabbing component'
+      msg: 'This is simple 2 way data binding or vue reactivity',
+      title: "This is a title",
+      user: {
+        firstName: "John",
+        lastName: "Doe"
+      },
+      items: [
+        {title: 'Item 1 in array'},
+        {title: 'Item 1 in array'},
+        {title: 'Item 1 in array'},
+        {title: 'Item 1 in array'}   ]
+      }
+    },
+    methods: {
+      greet: function(e){
+        console.log(e.target.value);
+        this.msg = e.target.value;
+      }
+    },
+    computed: {
+      fullName: function(){
+        return this.user.firstName+' '+this.user.lastName
+      }
     }
-  }
+
 }
 </script>
 
@@ -180,6 +230,12 @@ export default {
 
 <!--Tab 1 styles-->
 <style scoped>
+
+#movies .md-card.card-ripple.md-theme-default.md-with-hover {
+    margin: 0 auto;
+}
+
+
 .has-ripple {
   margin-bottom: 16px;
   padding: 20px;
